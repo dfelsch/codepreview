@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9BB815CE-9097-46D8-9217-751FE179082D}</ProjectGuid>
+    <RootNamespace>CodePreview</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>STATIC_BUILD;SCI_LEXER;WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>GlobalExportFunctions.def</ModuleDefinitionFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ResourceCompile>
+      <Culture>0x0407</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>STATIC_BUILD;SCI_LEXER;WIN32;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>GlobalExportFunctions.def</ModuleDefinitionFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\scintilla\Accessor.h" />
+    <ClInclude Include="..\scintilla\AutoComplete.h" />
+    <ClInclude Include="..\scintilla\CallTip.h" />
+    <ClInclude Include="..\scintilla\Catalogue.h" />
+    <ClInclude Include="..\scintilla\CellBuffer.h" />
+    <ClInclude Include="..\scintilla\CharacterSet.h" />
+    <ClInclude Include="..\scintilla\CharClassify.h" />
+    <ClInclude Include="..\scintilla\ContractionState.h" />
+    <ClInclude Include="..\scintilla\Decoration.h" />
+    <ClInclude Include="..\scintilla\Document.h" />
+    <ClInclude Include="..\scintilla\Editor.h" />
+    <ClInclude Include="..\scintilla\ExternalLexer.h" />
+    <ClInclude Include="..\scintilla\FontQuality.h" />
+    <ClInclude Include="..\scintilla\ILexer.h" />
+    <ClInclude Include="..\scintilla\Indicator.h" />
+    <ClInclude Include="..\scintilla\KeyMap.h" />
+    <ClInclude Include="..\scintilla\LexAccessor.h" />
+    <ClInclude Include="..\scintilla\LexerBase.h" />
+    <ClInclude Include="..\scintilla\LexerModule.h" />
+    <ClInclude Include="..\scintilla\LexerNoExceptions.h" />
+    <ClInclude Include="..\scintilla\LexerSimple.h" />
+    <ClInclude Include="..\scintilla\LineMarker.h" />
+    <ClInclude Include="..\scintilla\OptionSet.h" />
+    <ClInclude Include="..\scintilla\Partitioning.h" />
+    <ClInclude Include="..\scintilla\PerLine.h" />
+    <ClInclude Include="..\scintilla\Platform.h" />
+    <ClInclude Include="..\scintilla\PlatWin.h" />
+    <ClInclude Include="..\scintilla\PositionCache.h" />
+    <ClInclude Include="..\scintilla\PropSetSimple.h" />
+    <ClInclude Include="..\scintilla\RESearch.h" />
+    <ClInclude Include="..\scintilla\RunStyles.h" />
+    <ClInclude Include="..\scintilla\SciLexer.h" />
+    <ClInclude Include="..\scintilla\Scintilla.h" />
+    <ClInclude Include="..\scintilla\ScintillaBase.h" />
+    <ClInclude Include="..\scintilla\ScintillaWidget.h" />
+    <ClInclude Include="..\scintilla\Selection.h" />
+    <ClInclude Include="..\scintilla\SparseState.h" />
+    <ClInclude Include="..\scintilla\SplitVector.h" />
+    <ClInclude Include="..\scintilla\Style.h" />
+    <ClInclude Include="..\scintilla\StyleContext.h" />
+    <ClInclude Include="..\scintilla\SVector.h" />
+    <ClInclude Include="..\scintilla\UniConversion.h" />
+    <ClInclude Include="..\scintilla\ViewStyle.h" />
+    <ClInclude Include="..\scintilla\WordList.h" />
+    <ClInclude Include="..\scintilla\XPM.h" />
+    <ClInclude Include="ClassFactory.h" />
+    <ClInclude Include="CodePreview.h" />
+    <ClInclude Include="Languages.h" />
+    <ClInclude Include="Reg.h" />
+    <ClInclude Include="SciLexer.h" />
+    <ClInclude Include="Scintilla.h" />
+    <ClInclude Include="StdAfx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\scintilla\Accessor.cxx" />
+    <ClCompile Include="..\scintilla\AutoComplete.cxx" />
+    <ClCompile Include="..\scintilla\CallTip.cxx" />
+    <ClCompile Include="..\scintilla\Catalogue.cxx" />
+    <ClCompile Include="..\scintilla\CellBuffer.cxx" />
+    <ClCompile Include="..\scintilla\CharacterSet.cxx" />
+    <ClCompile Include="..\scintilla\CharClassify.cxx" />
+    <ClCompile Include="..\scintilla\ContractionState.cxx" />
+    <ClCompile Include="..\scintilla\Decoration.cxx" />
+    <ClCompile Include="..\scintilla\Document.cxx" />
+    <ClCompile Include="..\scintilla\Editor.cxx" />
+    <ClCompile Include="..\scintilla\ExternalLexer.cxx" />
+    <ClCompile Include="..\scintilla\Indicator.cxx" />
+    <ClCompile Include="..\scintilla\KeyMap.cxx" />
+    <ClCompile Include="..\scintilla\LexA68k.cxx" />
+    <ClCompile Include="..\scintilla\LexAbaqus.cxx" />
+    <ClCompile Include="..\scintilla\LexAda.cxx" />
+    <ClCompile Include="..\scintilla\LexAPDL.cxx" />
+    <ClCompile Include="..\scintilla\LexAsm.cxx" />
+    <ClCompile Include="..\scintilla\LexAsn1.cxx" />
+    <ClCompile Include="..\scintilla\LexASY.cxx" />
+    <ClCompile Include="..\scintilla\LexAU3.cxx" />
+    <ClCompile Include="..\scintilla\LexAVE.cxx" />
+    <ClCompile Include="..\scintilla\LexBaan.cxx" />
+    <ClCompile Include="..\scintilla\LexBash.cxx" />
+    <ClCompile Include="..\scintilla\LexBasic.cxx" />
+    <ClCompile Include="..\scintilla\LexBullant.cxx" />
+    <ClCompile Include="..\scintilla\LexCaml.cxx" />
+    <ClCompile Include="..\scintilla\LexCLW.cxx" />
+    <ClCompile Include="..\scintilla\LexCmake.cxx" />
+    <ClCompile Include="..\scintilla\LexCOBOL.cxx" />
+    <ClCompile Include="..\scintilla\LexConf.cxx" />
+    <ClCompile Include="..\scintilla\LexCPP.cxx" />
+    <ClCompile Include="..\scintilla\LexCrontab.cxx" />
+    <ClCompile Include="..\scintilla\LexCsound.cxx" />
+    <ClCompile Include="..\scintilla\LexCSS.cxx" />
+    <ClCompile Include="..\scintilla\LexD.cxx" />
+    <ClCompile Include="..\scintilla\LexEiffel.cxx" />
+    <ClCompile Include="..\scintilla\LexerBase.cxx" />
+    <ClCompile Include="..\scintilla\LexErlang.cxx" />
+    <ClCompile Include="..\scintilla\LexerModule.cxx" />
+    <ClCompile Include="..\scintilla\LexerNoExceptions.cxx" />
+    <ClCompile Include="..\scintilla\LexerSimple.cxx" />
+    <ClCompile Include="..\scintilla\LexEScript.cxx" />
+    <ClCompile Include="..\scintilla\LexFlagship.cxx" />
+    <ClCompile Include="..\scintilla\LexForth.cxx" />
+    <ClCompile Include="..\scintilla\LexFortran.cxx" />
+    <ClCompile Include="..\scintilla\LexGAP.cxx" />
+    <ClCompile Include="..\scintilla\LexGui4Cli.cxx" />
+    <ClCompile Include="..\scintilla\LexHaskell.cxx" />
+    <ClCompile Include="..\scintilla\LexHTML.cxx" />
+    <ClCompile Include="..\scintilla\LexInno.cxx" />
+    <ClCompile Include="..\scintilla\LexKix.cxx" />
+    <ClCompile Include="..\scintilla\LexLisp.cxx" />
+    <ClCompile Include="..\scintilla\LexLout.cxx" />
+    <ClCompile Include="..\scintilla\LexLua.cxx" />
+    <ClCompile Include="..\scintilla\LexMagik.cxx" />
+    <ClCompile Include="..\scintilla\LexMarkdown.cxx" />
+    <ClCompile Include="..\scintilla\LexMatlab.cxx" />
+    <ClCompile Include="..\scintilla\LexMetapost.cxx" />
+    <ClCompile Include="..\scintilla\LexMMIXAL.cxx" />
+    <ClCompile Include="..\scintilla\LexModula.cxx" />
+    <ClCompile Include="..\scintilla\LexMPT.cxx" />
+    <ClCompile Include="..\scintilla\LexMSSQL.cxx" />
+    <ClCompile Include="..\scintilla\LexMySQL.cxx" />
+    <ClCompile Include="..\scintilla\LexNimrod.cxx" />
+    <ClCompile Include="..\scintilla\LexNsis.cxx" />
+    <ClCompile Include="..\scintilla\LexOpal.cxx" />
+    <ClCompile Include="..\scintilla\LexOthers.cxx" />
+    <ClCompile Include="..\scintilla\LexPascal.cxx" />
+    <ClCompile Include="..\scintilla\LexPB.cxx" />
+    <ClCompile Include="..\scintilla\LexPerl.cxx" />
+    <ClCompile Include="..\scintilla\LexPLM.cxx" />
+    <ClCompile Include="..\scintilla\LexPOV.cxx" />
+    <ClCompile Include="..\scintilla\LexPowerPro.cxx" />
+    <ClCompile Include="..\scintilla\LexPowerShell.cxx" />
+    <ClCompile Include="..\scintilla\LexProgress.cxx" />
+    <ClCompile Include="..\scintilla\LexPS.cxx" />
+    <ClCompile Include="..\scintilla\LexPython.cxx" />
+    <ClCompile Include="..\scintilla\LexR.cxx" />
+    <ClCompile Include="..\scintilla\LexRebol.cxx" />
+    <ClCompile Include="..\scintilla\LexRuby.cxx" />
+    <ClCompile Include="..\scintilla\LexScriptol.cxx" />
+    <ClCompile Include="..\scintilla\LexSmalltalk.cxx" />
+    <ClCompile Include="..\scintilla\LexSML.cxx" />
+    <ClCompile Include="..\scintilla\LexSorcus.cxx" />
+    <ClCompile Include="..\scintilla\LexSpecman.cxx" />
+    <ClCompile Include="..\scintilla\LexSpice.cxx" />
+    <ClCompile Include="..\scintilla\LexSQL.cxx" />
+    <ClCompile Include="..\scintilla\LexTACL.cxx" />
+    <ClCompile Include="..\scintilla\LexTADS3.cxx" />
+    <ClCompile Include="..\scintilla\LexTAL.cxx" />
+    <ClCompile Include="..\scintilla\LexTCL.cxx" />
+    <ClCompile Include="..\scintilla\LexTeX.cxx" />
+    <ClCompile Include="..\scintilla\LexTxt2tags.cxx" />
+    <ClCompile Include="..\scintilla\LexVB.cxx" />
+    <ClCompile Include="..\scintilla\LexVerilog.cxx" />
+    <ClCompile Include="..\scintilla\LexVHDL.cxx" />
+    <ClCompile Include="..\scintilla\LexYAML.cxx" />
+    <ClCompile Include="..\scintilla\LineMarker.cxx" />
+    <ClCompile Include="..\scintilla\PerLine.cxx" />
+    <ClCompile Include="..\scintilla\PlatWin.cxx" />
+    <ClCompile Include="..\scintilla\PositionCache.cxx" />
+    <ClCompile Include="..\scintilla\PropSetSimple.cxx" />
+    <ClCompile Include="..\scintilla\RESearch.cxx" />
+    <ClCompile Include="..\scintilla\RunStyles.cxx" />
+    <ClCompile Include="..\scintilla\ScintillaBase.cxx" />
+    <ClCompile Include="..\scintilla\ScintillaWin.cxx" />
+    <ClCompile Include="..\scintilla\Selection.cxx" />
+    <ClCompile Include="..\scintilla\Style.cxx" />
+    <ClCompile Include="..\scintilla\StyleContext.cxx" />
+    <ClCompile Include="..\scintilla\UniConversion.cxx" />
+    <ClCompile Include="..\scintilla\ViewStyle.cxx" />
+    <ClCompile Include="..\scintilla\WordList.cxx" />
+    <ClCompile Include="..\scintilla\XPM.cxx" />
+    <ClCompile Include="ClassFactory.cpp" />
+    <ClCompile Include="CodePreview.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Python.cpp" />
+    <ClCompile Include="Reg.cpp" />
+    <ClCompile Include="StdAfx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GlobalExportFunctions.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CodePreview.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
