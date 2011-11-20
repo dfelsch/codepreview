@@ -539,7 +539,7 @@
     <ClCompile Include="StdAfx.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Python.cpp">
+    <ClCompile Include="Cpp.cpp">
       <Filter>Languages</Filter>
     </ClCompile>
   </ItemGroup>

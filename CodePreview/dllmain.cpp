@@ -38,13 +38,22 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 //Actual language is in "StdAfx.h"
 //Every language needs its own extensions, name and IDs
 #ifdef LANG_PYTHON
-	#define SUPPORTED_FILETYPES L".py"
+	#define SUPPORTED_FILETYPES L".py;.pyw"
 	// {DE7F719C-5E18-41D6-82E7-F2B201DC3F39}
 	const CLSID CLSID_CodePreview = 
 	{ 0xde7f719c, 0x5e18, 0x41d6, { 0x82, 0xe7, 0xf2, 0xb2, 0x1, 0xdc, 0x3f, 0x39 } };
 	// {1A92DA73-0761-48A5-9A30-076A80B64E1F}
 	const GUID APPID_CodePreview = 
 	{ 0x1a92da73, 0x761, 0x48a5, { 0x9a, 0x30, 0x7, 0x6a, 0x80, 0xb6, 0x4e, 0x1f } };
+#endif
+#ifdef LANG_CPP
+	#define SUPPORTED_FILETYPES L".c;.cc;.cpp;.cxx;.h;.hh;.hpp;.hxx"
+	// {77B65FCC-A2A3-4279-B742-B4B0ABB4421B}
+	const CLSID CLSID_CodePreview = 
+	{ 0x77b65fcc, 0xa2a3, 0x4279, { 0xb7, 0x42, 0xb4, 0xb0, 0xab, 0xb4, 0x42, 0x1b } };
+	// {1675B27D-FBC3-4DD4-917F-3F78709A2E82}
+	const GUID APPID_CodePreview = 
+	{ 0x1675b27d, 0xfbc3, 0x4dd4, { 0x91, 0x7f, 0x3f, 0x78, 0x70, 0x9a, 0x2e, 0x82 } };
 #endif
 
 HINSTANCE   g_hInst     = NULL;

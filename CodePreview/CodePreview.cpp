@@ -152,6 +152,9 @@ void CCodePreview::SetCodeLayout()
 	#ifdef LANG_PYTHON
 	SetPythonLayout(hwndScintilla);
 	#endif
+	#ifdef LANG_CPP
+	SetCppLayout(hwndScintilla);
+	#endif
 }
 
 //Destructor

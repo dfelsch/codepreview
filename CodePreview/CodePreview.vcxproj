@@ -240,8 +240,8 @@
     <ClCompile Include="..\scintilla\XPM.cxx" />
     <ClCompile Include="ClassFactory.cpp" />
     <ClCompile Include="CodePreview.cpp" />
+    <ClCompile Include="Cpp.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="Python.cpp" />
     <ClCompile Include="Reg.cpp" />
     <ClCompile Include="StdAfx.cpp" />
   </ItemGroup>

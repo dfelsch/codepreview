@@ -222,9 +222,9 @@ struct OptionsCPP {
 	bool foldCompact;
 	bool foldAtElse;
 	OptionsCPP() {
-		stylingWithinPreprocessor = false;
+		stylingWithinPreprocessor = true;
 		identifiersAllowDollars = true;
-		trackPreprocessor = true;
+		trackPreprocessor = false;
 		updatePreprocessor = true;
 		triplequotedStrings = false;
 		hashquotedStrings = false;
@@ -236,9 +236,9 @@ struct OptionsCPP {
 		foldExplicitStart = "";
 		foldExplicitEnd = "";
 		foldExplicitAnywhere = false;
-		foldPreprocessor = false;
+		foldPreprocessor = true;
 		foldCompact = false;
-		foldAtElse = false;
+		foldAtElse = true;
 	}
 };
 
