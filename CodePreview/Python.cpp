@@ -20,8 +20,8 @@ const COLORREF darkGreen = RGB(0, 0x80, 0);
 const COLORREF darkBlue  = RGB(0, 0, 0x80);
 
 const char pythonKeyWords[] = 
-	"None True and assert break class continue def del elif else except exec"
-	"finally for from global if import in is lambda not or pass" 
+	"None True and assert break class continue def del elif else except exec "
+	"finally for from global if import in is lambda not or pass " 
 	"print raise return try while yield";
 
 HWND Editor;
