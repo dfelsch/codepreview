@@ -64,10 +64,6 @@ public:
 	IFACEMETHODIMP SetSite(IUnknown *punkSite);
 	IFACEMETHODIMP GetSite(REFIID riid, void **ppv);
 
-	HWND GetHwndScintilla();
-
-	void OnMarginClick(NMHDR* nmhdr, LRESULT* result);
-
 	CCodePreview();
 
 protected:
@@ -88,9 +84,6 @@ private:
 	RECT m_rcParent;
 
 	// The actual previewer window.
-	HWND m_hwndPreview;
-
-	//The Scintilla window
 	HWND hwndScintilla;
 
 	// Site pointer from host, used to get IPreviewHandlerFrame.

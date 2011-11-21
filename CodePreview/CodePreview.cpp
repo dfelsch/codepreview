@@ -30,11 +30,7 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 extern HINSTANCE   g_hInst;
 
-#define PREVIEW_WINDOW_CLASSNAME L"CodePreviewWindow"
-
 const int MARGIN_FOLD_INDEX = 1;
-
-CCodePreview * _codePreviewInst;
 
 inline int RECTWIDTH(const RECT &rc)
 {
@@ -48,7 +44,7 @@ inline int RECTHEIGHT(const RECT &rc )
 
 //Constructor
 CCodePreview::CCodePreview() : m_cRef(1), m_pStream(NULL), 
-	m_hwndParent(NULL), m_hwndPreview(NULL), m_punkSite(NULL)
+	m_hwndParent(NULL), hwndScintilla(NULL), m_punkSite(NULL)
 {
 }
 
@@ -129,24 +125,6 @@ void CCodePreview::StyleEditor()
 	SendEditor(SCI_SETMARGINWIDTHN, 0, SendEditor(SCI_TEXTWIDTH, STYLE_LINENUMBER, reinterpret_cast<LPARAM>(lineCountBuffer))); //Adjust line-number-margin-width 
 }
 
-void CCodePreview::OnMarginClick(NMHDR* nmhdr, LRESULT* result)
-{
-  SCNotification* notify = (SCNotification*)nmhdr;
-
-  const int modifiers = notify->modifiers;
-  const int position = notify->position;
-  const int margin = notify->margin;
-  const int line_number = SendEditor(SCI_LINEFROMPOSITION, position, 0);
-
-  switch (margin) {
-	case MARGIN_FOLD_INDEX:
-	{
-	  SendEditor(SCI_TOGGLEFOLD, line_number, 0);
-	}
-	break;
-  }
-}
-
 void CCodePreview::SetCodeLayout()
 {
 	#ifdef LANG_PYTHON
@@ -164,11 +142,6 @@ CCodePreview::~CCodePreview()
 	{
 		DestroyWindow(hwndScintilla);
 		hwndScintilla = NULL;
-	}
-	if (m_hwndPreview)
-	{
-		DestroyWindow(m_hwndPreview);
-		m_hwndPreview = NULL;
 	}
 	if (m_punkSite)
 	{
@@ -287,14 +260,10 @@ IFACEMETHODIMP CCodePreview::SetWindow(HWND hwnd, const RECT *prc)
 		m_hwndParent = hwnd;  // Cache the HWND for later use
 		m_rcParent = *prc;    // Cache the RECT for later use
 
-		if (m_hwndPreview && hwndScintilla)
+		if (hwndScintilla)
 		{
 			// Update preview window parent and rect information
-			SetParent(m_hwndPreview, m_hwndParent);
-			SetParent(hwndScintilla, m_hwndPreview);
-			SetWindowPos(m_hwndPreview, NULL, m_rcParent.left, m_rcParent.top, 
-				RECTWIDTH(m_rcParent), RECTHEIGHT(m_rcParent), 
-				SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+			SetParent(hwndScintilla, m_hwndParent);
 			SetWindowPos(hwndScintilla, NULL, m_rcParent.left, m_rcParent.top, 
 				RECTWIDTH(m_rcParent), RECTHEIGHT(m_rcParent), 
 				SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
@@ -363,13 +332,9 @@ IFACEMETHODIMP CCodePreview::SetRect(const RECT *prc)
 	if (prc != NULL)
 	{
 		m_rcParent = *prc;
-		if (m_hwndPreview && hwndScintilla)
+		if (hwndScintilla)
 		{
 			// Preview window is already created, so set its size and position.
-			SetWindowPos(m_hwndPreview, NULL, m_rcParent.left, m_rcParent.top,
-				(m_rcParent.right - m_rcParent.left), // Width
-				(m_rcParent.bottom - m_rcParent.top), // Height
-				SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
 			SetWindowPos(hwndScintilla, NULL, m_rcParent.left, m_rcParent.top,
 				(m_rcParent.right - m_rcParent.left), // Width
 				(m_rcParent.bottom - m_rcParent.top), // Height
@@ -380,87 +345,16 @@ IFACEMETHODIMP CCodePreview::SetRect(const RECT *prc)
 	return hr;
 }
 
-HWND CCodePreview::GetHwndScintilla()
-{
-	return hwndScintilla;
-}
-
-LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam) 
-{
-	NMHDR *lpnmhdr = (LPNMHDR) lParam;
-	switch (iMessage) 
-	{
-		case WM_NOTIFY:
-			if(lpnmhdr->hwndFrom == _codePreviewInst->GetHwndScintilla())
-			{
-				switch(lpnmhdr->code)
-				{
-					case SCN_MARGINCLICK:
-						_codePreviewInst->OnMarginClick(lpnmhdr, 0);
-						break;
-				}
-			}
-			break;
-
-		default:
-			return DefWindowProc(hWnd, iMessage, wParam, lParam);
-	}
-	return S_OK;
-}
-
-static HRESULT RegisterWindowClass() 
-{
-	WNDCLASS wndclass;
-	wndclass.style = CS_HREDRAW | CS_VREDRAW;
-	wndclass.lpfnWndProc = &WndProc;
-	wndclass.cbClsExtra = 0;
-	wndclass.cbWndExtra = 0;
-	wndclass.hInstance = g_hInst;
-	wndclass.hIcon = 0;
-	wndclass.hCursor = NULL;
-	wndclass.hbrBackground = NULL;
-	wndclass.lpszMenuName = NULL;
-	wndclass.lpszClassName = PREVIEW_WINDOW_CLASSNAME;
-
-	if (!::RegisterClass(&wndclass))
-		return E_FAIL;
-	return S_OK;
-}
-
 // The method directs the preview handler to load data from the source 
 // specified in an earlier Initialize method call, and to begin rendering to 
 // the previewer window.
 IFACEMETHODIMP CCodePreview::DoPreview()
 {
 	HRESULT hr = E_FAIL;
-	_codePreviewInst = this;
 
 	// Cannot call more than once. (Unload should be called before another DoPreview)
-	if (m_hwndPreview != NULL || !m_pStream) 
+	if (hwndScintilla != NULL || !m_pStream) 
 		return E_FAIL;
-
-	if(RegisterWindowClass() == E_FAIL)
-	{
-		MessageBox(NULL, PREVIEW_WINDOW_CLASSNAME L" could not be registred!", L"Error", MB_OK);
-		return E_FAIL;
-	}
-
-	//
-	// Create the preview window
-	// 
-	m_hwndPreview = CreateWindow(
-					  PREVIEW_WINDOW_CLASSNAME,
-					  L"PreviewHandlerParent",
-					  WS_CHILD | WS_CLIPCHILDREN,
-					  m_rcParent.left, m_rcParent.top, 
-					  RECTWIDTH(m_rcParent), RECTHEIGHT(m_rcParent),
-					  m_hwndParent,
-					  0,
-					  g_hInst,
-					  0);
-
-	if (m_hwndPreview == NULL)
-		return hr = HRESULT_FROM_WIN32(GetLastError());
 
 	//Load Scintilla
 	if (!Scintilla_RegisterClasses(g_hInst))
@@ -475,7 +369,7 @@ IFACEMETHODIMP CCodePreview::DoPreview()
 					  WS_CHILD | WS_VSCROLL | WS_CLIPCHILDREN,
 					  0, 0, 
 					  m_rcParent.right - m_rcParent.left, m_rcParent.bottom - m_rcParent.top,
-					  m_hwndPreview,
+					  m_hwndParent,
 					  0,
 					  g_hInst,
 					  0);
@@ -498,7 +392,6 @@ IFACEMETHODIMP CCodePreview::DoPreview()
 	SendEditor(SCI_SETREADONLY, TRUE);
 
 	//make control visible
-	ShowWindow(m_hwndPreview, SW_SHOW);
 	ShowWindow(hwndScintilla, SW_SHOW);
 
 	return hr = S_OK;
@@ -522,12 +415,6 @@ HRESULT CCodePreview::Unload()
 		hwndScintilla = NULL;
 	}
 
-	if (m_hwndPreview)
-	{
-		DestroyWindow(m_hwndPreview);
-		m_hwndPreview = NULL;
-	}
-
 	Scintilla_ReleaseResources();
 
 	if (text)
@@ -535,8 +422,6 @@ HRESULT CCodePreview::Unload()
 		delete[] text;
 		text = NULL;
 	}
-
-	::UnregisterClass(PREVIEW_WINDOW_CLASSNAME, g_hInst);
 
 	return S_OK;
 }

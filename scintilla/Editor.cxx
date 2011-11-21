@@ -4470,6 +4470,13 @@ bool Editor::NotifyMarginClick(Point pt, bool shift, bool ctrl, bool alt) {
 		scn.position = pdoc->LineStart(LineFromLocation(pt));
 		scn.margin = marginClicked;
 		NotifyParent(scn);
+
+		//Implement folding ;)
+		if(scn.margin == 1)
+		{
+			ToggleContraction(pdoc->LineFromPosition(scn.position));
+		}
+
 		return true;
 	} else {
 		return false;
