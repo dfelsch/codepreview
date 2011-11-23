@@ -4,10 +4,12 @@ Project:      CodePreview
 Copyright (c) Dennis Felsch
 \***************************************************************************/
 
+#include "StdAfx.h"
+
+#ifdef LANG_PYTHON
+
 #pragma once
 #include <windows.h>
-#include "Scintilla.h"
-#include "SciLexer.h"
 
 const COLORREF black     = RGB(0,0,0);
 const COLORREF white     = RGB(0xff,0xff,0xff);
@@ -56,3 +58,5 @@ void SetPythonLayout(HWND editor)
 	SetAStyle(SCE_P_TRIPLEDOUBLE, darkGreen);
 	SetAStyle(SCE_P_COMMENTBLOCK, darkGreen);
 }
+
+#endif

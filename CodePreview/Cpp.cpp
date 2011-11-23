@@ -4,10 +4,12 @@ Project:      CodePreview
 Copyright (c) Dennis Felsch
 \***************************************************************************/
 
+#include "StdAfx.h"
+
+#ifdef LANG_CPP
+
 #pragma once
 #include <windows.h>
-#include "Scintilla.h"
-#include "SciLexer.h"
 
 const COLORREF black      = RGB(0,0,0);
 const COLORREF white      = RGB(0xff,0xff,0xff);
@@ -77,3 +79,5 @@ void SetCppLayout(HWND editor)
 	SetAStyle(SCE_C_COMMENTDOCKEYWORD, blue); 
 	SetAStyle(SCE_C_COMMENTDOCKEYWORDERROR, red);
 }
+
+#endif

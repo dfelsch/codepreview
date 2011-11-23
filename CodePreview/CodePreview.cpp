@@ -289,10 +289,10 @@ IFACEMETHODIMP CCodePreview::SetFocus()
 IFACEMETHODIMP CCodePreview::QueryFocus(HWND *phwnd)
 {
 	HRESULT hr = E_INVALIDARG;
-	if (phwnd)
+	if (phwnd != NULL)
 	{
 		*phwnd = ::GetFocus();
-		if (*phwnd)
+		if (*phwnd != NULL)
 		{
 			hr = S_OK;
 		}
@@ -301,6 +301,7 @@ IFACEMETHODIMP CCodePreview::QueryFocus(HWND *phwnd)
 			hr = HRESULT_FROM_WIN32(GetLastError());
 		}
 	}
+	
 	return hr;
 }
 
@@ -366,9 +367,11 @@ IFACEMETHODIMP CCodePreview::DoPreview()
 	hwndScintilla = CreateWindow(
 					  L"Scintilla",
 					  L"Editor",
-					  WS_CHILD | WS_VSCROLL | WS_CLIPCHILDREN,
-					  0, 0, 
-					  m_rcParent.right - m_rcParent.left, m_rcParent.bottom - m_rcParent.top,
+					  WS_CHILD | WS_VSCROLL | WS_VISIBLE,
+					  m_rcParent.left, 
+					  m_rcParent.top, 
+					  RECTWIDTH(m_rcParent), 
+					  RECTHEIGHT(m_rcParent),
 					  m_hwndParent,
 					  0,
 					  g_hInst,

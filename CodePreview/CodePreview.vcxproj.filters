@@ -542,6 +542,9 @@
     <ClCompile Include="Cpp.cpp">
       <Filter>Languages</Filter>
     </ClCompile>
+    <ClCompile Include="Python.cpp">
+      <Filter>Languages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="GlobalExportFunctions.def">

@@ -8,7 +8,7 @@
 #include "SciLexer.h"
 
 //Set the language for which the DLL is compiled
-#define LANG_CPP
+#define LANG_PYTHON
 
 #ifdef LANG_PYTHON
 #define HANDLER_NAME L"Python Preview"
