@@ -16,10 +16,6 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 #include "CodePreview.h"
 #include <Shlwapi.h>
-#include <Wincrypt.h>   // For CryptStringToBinary.
-#include <msxml6.h>
-#include <WindowsX.h>
-#include <assert.h>
 #include "StdAfx.h"
 
 #include "Languages.h"
@@ -367,7 +363,7 @@ IFACEMETHODIMP CCodePreview::DoPreview()
 	hwndScintilla = CreateWindow(
 					  L"Scintilla",
 					  L"Editor",
-					  WS_CHILD | WS_VSCROLL | WS_VISIBLE,
+					  WS_CHILD | WS_VISIBLE,
 					  m_rcParent.left, 
 					  m_rcParent.top, 
 					  RECTWIDTH(m_rcParent), 
@@ -393,9 +389,6 @@ IFACEMETHODIMP CCodePreview::DoPreview()
 
 	//Make control read-only (has to be done after setting the text)
 	SendEditor(SCI_SETREADONLY, TRUE);
-
-	//make control visible
-	ShowWindow(hwndScintilla, SW_SHOW);
 
 	return hr = S_OK;
 }

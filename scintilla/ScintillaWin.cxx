@@ -847,6 +847,8 @@ sptr_t ScintillaWin::WndProc(unsigned int iMessage, uptr_t wParam, sptr_t lParam
 			//	Platform::IsKeyDown(VK_SHIFT),
 			//	Platform::IsKeyDown(VK_CONTROL),
 			//	Platform::IsKeyDown(VK_MENU));
+			
+			::SetForegroundWindow(MainHWND());
 			::SetFocus(MainHWND());
 			ButtonDown(Point::FromLong(lParam), ::GetMessageTime(),
 				(wParam & MK_SHIFT) != 0,
