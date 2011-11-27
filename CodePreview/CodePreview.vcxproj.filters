@@ -545,10 +545,25 @@
     <ClCompile Include="Python.cpp">
       <Filter>Languages</Filter>
     </ClCompile>
+    <ClCompile Include="Java.cpp">
+      <Filter>Languages</Filter>
+    </ClCompile>
+    <ClCompile Include="CSharp.cpp">
+      <Filter>Languages</Filter>
+    </ClCompile>
+    <ClCompile Include="Perl.cpp">
+      <Filter>Languages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="GlobalExportFunctions.def">
       <Filter>Quelldateien</Filter>
+    </None>
+    <None Include="..\CHANGELOG">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="..\INSTALL">
+      <Filter>Ressourcendateien</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

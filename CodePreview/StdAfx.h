@@ -16,3 +16,12 @@
 #ifdef LANG_CPP
 #define HANDLER_NAME L"C++ Preview"
 #endif
+#ifdef LANG_JAVA
+#define HANDLER_NAME L"Java Preview"
+#endif
+#ifdef LANG_CSHARP
+#define HANDLER_NAME L"C# Preview"
+#endif
+#ifdef LANG_PERL
+#define HANDLER_NAME L"Perl Preview"
+#endif

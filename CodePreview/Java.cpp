@@ -1,12 +1,12 @@
 /****************************** Module Header ******************************\
-Module Name:  Cpp.cpp
+Module Name:  Java.cpp
 Project:      CodePreview
 Copyright (c) Dennis Felsch
 \***************************************************************************/
 
 #include "StdAfx.h"
 
-#ifdef LANG_CPP
+#ifdef LANG_JAVA
 
 #pragma once
 #include <windows.h>
@@ -21,15 +21,13 @@ const COLORREF darkRed    = RGB(0x80,0,0);
 const COLORREF darkGreen  = RGB(0, 0x80, 0);
 const COLORREF darkBlue   = RGB(0, 0, 0x80);
 
-const char cppKeyWords[] = 
-	"and and_eq asm auto bitand bitor bool break "
-	"case catch char class compl const const_cast continue "
-	"default delete do double dynamic_cast else enum explicit export extern false float for "
-	"friend goto if inline int long mutable namespace new not not_eq "
-	"operator or or_eq private protected public "
-	"register reinterpret_cast return short signed sizeof static static_cast struct switch "
-	"template this throw true try typedef typeid typename union unsigned using "
-	"virtual void volatile wchar_t while xor xor_eq";
+const char javaKeyWords[] = 
+	"abstract assert boolean break byte case catch char class "
+	"const continue default do double else enum extends final finally float for "
+	"goto if implements import instanceof int interface long "
+	"native new package private protected public "
+	"return short static strictfp super switch synchronized this throw throws "
+	"transient try var void volatile while";
 
 const char doxygenKeyWords[] = 
 	"a addindex addtogroup anchor arg attention "
@@ -63,11 +61,11 @@ void SetAStyle(int style, COLORREF fore, COLORREF back=white, int size=-1, const
 }
 
 /*** HERE THE REAL WORK IS DONE ***/
-void SetCppLayout(HWND editor)
+void SetJavaLayout(HWND editor)
 {
 	Editor = editor;
 	SendEditor(SCI_SETLEXER, SCLEX_CPP);
-	SendEditor(SCI_SETKEYWORDS, 0, reinterpret_cast<LPARAM>(cppKeyWords));
+	SendEditor(SCI_SETKEYWORDS, 0, reinterpret_cast<LPARAM>(javaKeyWords));
 	SendEditor(SCI_SETKEYWORDS, 2, reinterpret_cast<LPARAM>(doxygenKeyWords));
 	SetAStyle(SCE_C_COMMENT, darkGreen);
 	SetAStyle(SCE_C_COMMENTLINE, darkGreen);

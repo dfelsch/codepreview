@@ -241,12 +241,17 @@
     <ClCompile Include="ClassFactory.cpp" />
     <ClCompile Include="CodePreview.cpp" />
     <ClCompile Include="Cpp.cpp" />
+    <ClCompile Include="CSharp.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Java.cpp" />
+    <ClCompile Include="Perl.cpp" />
     <ClCompile Include="Python.cpp" />
     <ClCompile Include="Reg.cpp" />
     <ClCompile Include="StdAfx.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\CHANGELOG" />
+    <None Include="..\INSTALL" />
     <None Include="GlobalExportFunctions.def" />
   </ItemGroup>
   <ItemGroup>

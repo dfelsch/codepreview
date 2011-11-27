@@ -71,10 +71,16 @@ void CCodePreview::SetText()
 	ULONG pcbRead;
 	m_pStream->Stat(&stats, STATFLAG_NONAME);
 	text = new char [stats.cbSize.LowPart + 1]; //should be enough, +1 for \0
+	char * beginning = text;
 
 	m_pStream->Read(text, stats.cbSize.LowPart, &pcbRead);
 	text[stats.cbSize.LowPart] = '\0'; //terminate text
-	SendEditor(SCI_SETTEXT, 0, reinterpret_cast<LPARAM>(text));
+
+	//Check for UTF-8 Byte Order Mark (Scintilla seems to be incapable of detecting this...)
+	if(text[0] == (char)0xEF && text[1] == (char)0xBB && text[2] == (char)0xBF)
+		beginning = text + 3;
+
+	SendEditor(SCI_SETTEXT, 0, reinterpret_cast<LPARAM>(beginning));
 }
 
 void CCodePreview::StyleEditor()
@@ -128,6 +134,15 @@ void CCodePreview::SetCodeLayout()
 	#endif
 	#ifdef LANG_CPP
 	SetCppLayout(hwndScintilla);
+	#endif
+	#ifdef LANG_JAVA
+	SetJavaLayout(hwndScintilla);
+	#endif
+	#ifdef LANG_CSHARP
+	SetCSharpLayout(hwndScintilla);
+	#endif
+	#ifdef LANG_PERL
+	SetPerlLayout(hwndScintilla);
 	#endif
 }
 
