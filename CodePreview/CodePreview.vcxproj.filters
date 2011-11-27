@@ -565,6 +565,9 @@
     <None Include="..\INSTALL">
       <Filter>Ressourcendateien</Filter>
     </None>
+    <None Include="..\LICENSE">
+      <Filter>Ressourcendateien</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CodePreview.rc">

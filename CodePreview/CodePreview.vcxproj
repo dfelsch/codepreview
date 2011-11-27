@@ -252,6 +252,7 @@
   <ItemGroup>
     <None Include="..\CHANGELOG" />
     <None Include="..\INSTALL" />
+    <None Include="..\LICENSE" />
     <None Include="GlobalExportFunctions.def" />
   </ItemGroup>
   <ItemGroup>
