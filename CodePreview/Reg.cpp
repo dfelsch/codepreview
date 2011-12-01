@@ -1,6 +1,12 @@
 /****************************** Module Header ******************************\
 Module Name:  Reg.cpp
 Project:      CodePreview
+Copyright (c) Dennis Felsch
+\***************************************************************************/
+
+/********************* Original Header from code sample ********************\
+Module Name:  Reg.cpp
+Project:      CppShellExtPreviewHandler
 Copyright (c) Microsoft Corporation.
 
 The file implements the reusable helper functions to register and unregister 

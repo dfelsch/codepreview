@@ -1,9 +1,15 @@
 /****************************** Module Header ******************************\
-Module Name:  ClassFactory.h
+Module Name:  Classfactory.h
 Project:      CodePreview
+Copyright (c) Dennis Felsch
+\***************************************************************************/
+
+/********************* Original Header from code sample ********************\
+Module Name:  ClassFactory.h
+Project:      CppShellExtPreviewHandler
 Copyright (c) Microsoft Corporation.
 
-The file declares the class factory for the CodePreview COM class. 
+The file declares the class factory for the RecipePreviewHandler COM class. 
 
 This source is subject to the Microsoft Public License.
 See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.

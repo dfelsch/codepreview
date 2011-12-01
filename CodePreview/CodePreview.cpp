@@ -1,9 +1,13 @@
 /****************************** Module Header ******************************\
 Module Name:  CodePreview.cpp
 Project:      CodePreview
+Copyright (c) Dennis Felsch
+\***************************************************************************/
+
+/********************* Original Header from code sample ********************\
+Module Name:  CodePreview.cpp
+Project:      CodePreview
 Copyright (c) Microsoft Corporation.
-
-
 
 This source is subject to the Microsoft Public License.
 See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.

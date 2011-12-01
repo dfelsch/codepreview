@@ -1,6 +1,12 @@
 /****************************** Module Header ******************************\
 Module Name:  dllmain.cpp
 Project:      CodePreview
+Copyright (c) Dennis Felsch
+\***************************************************************************/
+
+/********************* Original Header from code sample ********************\
+Module Name:  dllmain.cpp
+Project:      CppShellExtContextMenuHandler
 Copyright (c) Microsoft Corporation.
 
 The file implements DllMain, and the DllGetClassObject, DllCanUnloadNow, 
@@ -14,7 +20,7 @@ DllCanUnloadNow checks if we can unload the component from the memory.
 
 DllRegisterServer registers the COM server and the preview handler in the 
 registry by invoking the helper functions defined in Reg.h/cpp. The preview 
-handler is associated with the .Scintilla file class.
+handler is associated with the .recipe file class.
 
 DllUnregisterServer unregisters the COM server and the preview handler. 
 
@@ -26,8 +32,6 @@ THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 \***************************************************************************/
-
-/* Modified by Dennis Felsch */
 
 #include <windows.h>
 #include <Guiddef.h>
