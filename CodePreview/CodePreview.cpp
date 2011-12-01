@@ -26,7 +26,8 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 extern HINSTANCE   g_hInst;
 
-const int MARGIN_FOLD_INDEX = 1;
+const unsigned int MARGIN_FOLD_INDEX = 1;
+const size_t MAX_SIZE = 10 * 1024 * 1024; // 10 MiB
 
 inline int RECTWIDTH(const RECT &rc)
 {
@@ -70,7 +71,11 @@ void CCodePreview::SetText()
 	STATSTG stats;
 	ULONG pcbRead;
 	m_pStream->Stat(&stats, STATFLAG_NONAME);
-	text = new char [stats.cbSize.LowPart + 1]; //should be enough, +1 for \0
+
+	if(stats.cbSize.LowPart > MAX_SIZE)
+		stats.cbSize.LowPart = MAX_SIZE;
+
+	text = new char [stats.cbSize.LowPart + 1]; // +1 for \0
 	char * beginning = text;
 
 	m_pStream->Read(text, stats.cbSize.LowPart, &pcbRead);
