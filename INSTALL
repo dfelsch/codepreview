@@ -1,5 +1,0 @@
-To install the preview handler simply copy the DLL to some folder from where code can be executed (like "C:\Program Files (x86)\CodePreview").
-
-Open a terminal with administrative rights and navigate to the folder with the DLL. Install the DLL by executing "regsvr32 /i [DLL]". You should get a message telling you that the DLL was successfully installed. You can instantly use the preview handler, no restart needed.
-
-To uninstall do the same as above but with the command "regsvr32 /u [DLL]".
